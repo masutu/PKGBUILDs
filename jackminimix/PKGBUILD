@@ -14,9 +14,11 @@ md5sums=('28d7d137f2db50f325459924c78a18c2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+
+package() {
   make DESTDIR="$pkgdir/" install
   install -D -m644 AUTHORS $pkgdir/usr/share/${pkgname}/AUTHORS
   install -m644 README  $pkgdir/usr/share/${pkgname}/README
