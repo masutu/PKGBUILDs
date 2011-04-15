@@ -13,13 +13,11 @@ md5sums=('4ec4a58d4171fcc083650ecaf8fbe7ab')
 
 build() {
   cd "$srcdir/$pkgname"
-
   make
 }
 
 package() {
   cd "$srcdir/$pkgname"
-
   install -D -m755 nodau $pkgdir/usr/bin/nodau
   install -D -m644 man/nodau.1 $pkgdir/usr/share/man/man1/nodau.1
   install -D -m644 CHANGELOG $pkgdir/usr/share/doc/$pkgname/CHANGELOG
