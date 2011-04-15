@@ -14,8 +14,12 @@ md5sums=('5be760caf3037d663861548977b4b236')
 
 build() {
   cd "$srcdir/Audio-JackMiniMix-$pkgver"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1
-  make || return 1
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package() {
+  cd "$srcdir/Audio-JackMiniMix-$pkgver"
   make install DESTDIR="$pkgdir/" || return 1
 }
 
