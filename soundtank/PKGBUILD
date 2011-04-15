@@ -18,7 +18,11 @@ build() {
   automake --add-missing
   autoconf
   ./configure --prefix=/usr
-  make || return 1
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   cd doc
   for file in *
