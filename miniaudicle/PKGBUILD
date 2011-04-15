@@ -15,8 +15,14 @@ md5sums=('37389af75bd98de127c71e08d47d43c7')
 
 build() {
   cd $srcdir/miniAudicle-$pkgver/
-  make linux-alsa || return 1
-# This can be 'make linux-oss', 'make linux-alsa', or 'make linux-jack' 
-  install -D -m 755 wxw/miniAudicle $pkgdir/usr/bin/miniAudicle
+  make linux-alsa
+# This can be 'make linux-oss', 'make linux-alsa', or 'make linux-jack'
 }
+
+package() {
+	cd $srcdir/miniAudicle-$pkgver/
+	install -D -m 755 wxw/miniAudicle $pkgdir/usr/bin/miniAudicle
+}
+
+# vim:set ts=2 sw=2 et:
 
