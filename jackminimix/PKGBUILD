@@ -19,6 +19,7 @@ build() {
 }
 
 package() {
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -D -m644 AUTHORS $pkgdir/usr/share/${pkgname}/AUTHORS
   install -m644 README  $pkgdir/usr/share/${pkgname}/README
