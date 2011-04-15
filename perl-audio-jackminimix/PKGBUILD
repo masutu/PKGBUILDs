@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd "$srcdir/Audio-JackMiniMix-$pkgver"
-  make install DESTDIR="$pkgdir/" || return 1
+  make install DESTDIR="$pkgdir/"
 }
 
 # vim:set ts=2 sw=2 et:
