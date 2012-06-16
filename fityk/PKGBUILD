@@ -1,0 +1,38 @@
+# Maintainer: masutu < masutu dot arch at gmail dot com >
+# Contributor: Thomas Dziedzic < gostrc at gmail >
+# Contributor: Anton Bazhenov <anton.bazhenov at gmail>
+# Contributor: Cuneyt Unlu <unlucu AT gmail.com>
+
+pkgname=fityk
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="A program for nonlinear fitting of analytical functions to data."
+arch=(i686)
+url="http://www.unipress.waw.pl/fityk/"
+license=('GPL')
+depends=('lua' 'wxgtk-2.9' 'xylib')
+makedepends=('boost' 'git' 'python2-sphinx' 'swig')
+options=(!libtool)
+install=fityk.install
+
+build() {
+  cd "$srcdir"
+  if [[ -d fityk ]]; then
+    cd fityk && git pull origin
+  else
+    git clone https://github.com/wojdyr/fityk.git
+  fi
+  rm -rf "$srcdir/fityk-build"
+  git clone "$srcdir/fityk" "$srcdir/fityk-build"
+  cd "$srcdir/fityk-build"
+  sed -i 's#sphinx-build#sphinx-build2#' doc/Makefile
+  ./autogen.sh --prefix=/usr --with-wx-config=/usr/bin/wx-config-2.9
+  make
+}
+
+package() {
+  cd "$srcdir/fityk-build"
+  make DESTDIR="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:
