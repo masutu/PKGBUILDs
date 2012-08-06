@@ -1,6 +1,6 @@
 # Maintainer: masutu <masutu dot arch at gmail dot com>
 pkgname=petri-foo
-pkgver=0.1.85
+pkgver=0.1.87
 pkgrel=1
 pkgdesc="A fork of specimen, a MIDI controllable audio sampler, for JACK."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake')
 optdepends=('liblo: Non Session Manager support')
 install='petri-foo.install'
 source=(http://sourceforge.net/projects/${pkgname}/files/Source/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('bd089b530f21d54564bed3247a8cb976')
+md5sums=('40f8a224368187672f9f306f8a4fa8c5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
