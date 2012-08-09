@@ -3,7 +3,7 @@
 
 pkgname=soundtank
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hosts LADSPA plugins in realtime objects"
 arch=('i686' 'x86_64')
 url="http://soundtank.sourceforge.net/"
@@ -17,7 +17,7 @@ build() {
   aclocal
   automake --add-missing
   autoconf
-  ./configure --prefix=/usr
+  LDFLAGS="-ldl" ./configure --prefix=/usr
   make
 }
 
