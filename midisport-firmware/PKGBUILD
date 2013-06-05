@@ -3,7 +3,7 @@
 
 pkgname=midisport-firmware
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Firmware for some (legacy) m-audio midi devices"
 url="http://usb-midi-fw.sourceforge.net/"
 arch=('any')
