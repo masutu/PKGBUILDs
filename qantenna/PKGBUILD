@@ -1,0 +1,26 @@
+# Maintainer: masutu < masutu dot arch at gmail dot com>
+# Contributor: Matias De la Puente <mfpuente.ar at gmail com>
+
+pkgname=qantenna
+pkgver=0.2.3
+pkgrel=2
+pkgdesc="A multiplatform antenna and radiation pattern analyzer"
+arch=('i686' 'x86_64')
+url="http://qantenna.sourceforge.net/"
+license=('GPLv2')
+depends=('glu' 'necpp' 'qt4')
+source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2)
+md5sums=('19c69e2ff3924939ccad51bcbefb7726')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  qmake-qt4 PREFIX=/usr qantenna.pro
+	sed -i 's/#LIBS += -lGLEW/LIBS += -lGLU/' ./src/src.pro
+	make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make INSTALL_ROOT="$pkgdir/" install
+}
+
